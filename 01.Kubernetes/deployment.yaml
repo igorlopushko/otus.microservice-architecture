@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: aspnetapp-replicas
+spec:
+    replicas: 3
+    selector:
+        matchLabels:
+          app: aspnetapp
+    template:
+        metadata:
+          labels:
+              app: aspnetapp
+        spec:
+          containers:
+          - name: aspnetapp
+            image: drmoz/aspnetapp
+            ports:
+              - containerPort: 80

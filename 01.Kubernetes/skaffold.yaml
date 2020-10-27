@@ -1,0 +1,14 @@
+apiVersion: skaffold/v2beta8
+kind: Config
+metadata:
+  name: -.kubernetes
+build:
+  artifacts:
+  - image: drmoz/aspnetapp
+    context: aspnetapp
+deploy:
+  kubectl:
+    manifests:
+    - deployment.yaml
+    - ingress.yaml
+    - service.yaml
