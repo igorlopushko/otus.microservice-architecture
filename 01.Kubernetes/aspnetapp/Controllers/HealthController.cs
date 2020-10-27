@@ -9,7 +9,12 @@ namespace aspnetapp.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            return Ok();
+            return StatusCode(200, new Response { Status = "OK"});
+        }
+        
+        private class Response
+        {
+            public string Status { get; set; }
         }
     }
 }
