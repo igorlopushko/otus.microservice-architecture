@@ -19,7 +19,7 @@ WORKDIR /src/UserService
 RUN dotnet build -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish -c Release --self-contained --runtime linux-x64 -o /app/publish
+RUN dotnet publish -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app

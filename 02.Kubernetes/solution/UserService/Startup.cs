@@ -10,8 +10,8 @@ namespace UserService
 {
     public class Startup
     {
-        public IConfiguration Configuration { get; set; }
-
+        public IConfiguration Configuration { get; }
+        
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
@@ -24,14 +24,6 @@ namespace UserService
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            var builder = new ConfigurationBuilder()
-                .SetBasePath(env.ContentRootPath)
-                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-                .AddJsonFile("secrets/appsettings.secrets.json", optional: true, reloadOnChange: true)
-                .AddEnvironmentVariables();
-            
-            Configuration = builder.Build();
-            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "aspnetapp": {
+    "UserService": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "",

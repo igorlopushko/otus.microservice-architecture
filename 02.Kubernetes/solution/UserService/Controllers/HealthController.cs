@@ -17,7 +17,7 @@ namespace UserService.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            return StatusCode(200, new Response { Status = "OK", Connection = _config.GetConnectionString("UserContext")});
+            return StatusCode(200, new Response {Status = "OK", Connection = _config.GetConnectionString("UserContext")});
         }
         
         private new class Response
