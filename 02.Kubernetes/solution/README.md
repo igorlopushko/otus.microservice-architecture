@@ -1,16 +1,16 @@
-#install and configure minikube
-brew install minikube
-sudo mv minikube /usr/local/bin
-minikube start --vm-driver=virtualbox
-minikube addons enable ingress
+#install and configure minikube<br />
+brew install minikube<br />
+sudo mv minikube /usr/local/bin<br />
+minikube start --vm-driver=virtualbox<br />
+minikube addons enable ingress<br />
 
-#install secrets json file
+#install secrets json file<br />
 kubectl create secret generic secret-appsettings --from-file=./appsettings.secrets.json
 
-#build user service docker image
-docker build -f UserService.Dockerfile -t drmoz/userservice:v1 .
+#build user service docker image<br />
+docker build -f UserService.Dockerfile -t drmoz/userservice:v1 .<br />
 docker push drmoz/userservice:v1
 
-#build migrations docker image
-docker build -f UserService-Migration.Dockerfile -t drmoz/userservice-migrations:v1 .
+#build migrations docker image<br />
+docker build -f UserService-Migration.Dockerfile -t drmoz/userservice-migrations:v1 .<br />
 docker push drmoz/userservice-migrations:v1
