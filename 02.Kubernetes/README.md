@@ -1,4 +1,4 @@
-docker image for the simple service "drmoz/aspnetapp"<br/>
+docker image for the simple service "drmoz/userservice:v1"<br/>
 
 apply skaffold.yaml<br/>
 
