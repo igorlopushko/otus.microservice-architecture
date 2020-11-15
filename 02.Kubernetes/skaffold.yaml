@@ -1,0 +1,16 @@
+apiVersion: skaffold/v2beta8
+kind: Config
+metadata:
+  name: -.kubernetes
+build:
+  artifacts:
+  - image: drmoz/userservice
+    context: solution
+    docker:
+      dockerfile: UserService.Dockerfile
+deploy:
+  kubectl:
+    manifests:
+    - userservice-deployment.yaml
+    - user-service.yaml
+    - userservice-ingress.yaml

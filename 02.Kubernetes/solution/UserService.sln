@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserService", "UserService\UserService.csproj", "{6E862ED2-2AB7-467A-AA80-B41A24C9068F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserService.DataAccess", "UserService.DataAccess\UserService.DataAccess.csproj", "{A68CD4E9-F2C2-442D-BC7A-25FB615CAF3C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6E862ED2-2AB7-467A-AA80-B41A24C9068F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E862ED2-2AB7-467A-AA80-B41A24C9068F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E862ED2-2AB7-467A-AA80-B41A24C9068F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E862ED2-2AB7-467A-AA80-B41A24C9068F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A68CD4E9-F2C2-442D-BC7A-25FB615CAF3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A68CD4E9-F2C2-442D-BC7A-25FB615CAF3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A68CD4E9-F2C2-442D-BC7A-25FB615CAF3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A68CD4E9-F2C2-442D-BC7A-25FB615CAF3C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
