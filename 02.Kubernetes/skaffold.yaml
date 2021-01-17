@@ -11,6 +11,18 @@ build:
 deploy:
   kubectl:
     manifests:
-    - userservice-deployment.yaml
-    - user-service.yaml
-    - userservice-ingress.yaml
+    # create secrets
+    - user-svc-mssqldb.secret.yaml
+
+    # create pv claims
+    - user-svc-mssqldb.pvclaim.yaml
+    
+    - user-svc-app.deployment.yaml    
+    - user-svc-mssqldb.statefulset.yaml
+
+    #setup services
+    - user-svc-app.service.yaml
+    - user-svc-mssqldb.service.yaml
+
+    #setup ingresses
+    - user-svc-app.ingress.yaml

@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: mssql-statefulset
+  name: user-svc-mssqldb-statefulset
 spec:
-  serviceName: "postgres"
+  serviceName: user-svc-mssqldb
   replicas: 1
   selector:
     matchLabels:
-      app: mssql
+      app: user-svc-mssqldb
       system: database
   template:
     metadata:
       labels:
-        app: mssql
+        app: user-svc-mssqldb
         system: database
     spec:
       terminationGracePeriodSeconds: 30
       containers:
-      - name: mssql
+      - name: user-svc-mssqldb
         image: mcr.microsoft.com/mssql/server:2019-latest
         ports:
         - containerPort: 1433
@@ -26,15 +26,15 @@ spec:
           value: "Developer"
         - name: ACCEPT_EULA
           value: "Y"
-        - name: MSSQL_SA_PASSWORD
+        - name: SA_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: mssql-secret
+              name: user-svc-mssqldb-secret
               key: password
         volumeMounts:
-        - name: mssql-storage
+        - name: user-svc-mssqldb-storage
           mountPath: /var/opt/mssql
       volumes:
-        - name: mssql-storage
+        - name: user-svc-mssqldb-storage
           persistentVolumeClaim:
-            claimName: mssql-pv-claim
+            claimName: user-svc-mssqldb-pv-claim

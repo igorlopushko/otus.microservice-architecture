@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: userservice-replicas
+  name: user-svc-app-replicas
 spec:
   replicas: 3
   strategy: 
@@ -10,19 +10,37 @@ spec:
       maxUnavailable: 1
   selector:
     matchLabels:
-      app: userservice
+      app: user-svc-app
       system: backend
   template:
     metadata:
       labels:
-          app: userservice
+          app: user-svc-app
           system: backend
     spec:
       containers:
-      - name: userservice
+      - name: user-svc-app
         image: drmoz/userservice:v1
         ports:
           - containerPort: 80
+
+        # to know when to restart a container
+        livenessProbe:
+          httpGet:
+            port: 80
+            path: /health
+          initialDelaySeconds: 10
+          periodSeconds: 5
+          timeoutSeconds: 2
+
+        # to know when a container application has started
+        readinessProbe:
+          httpGet:
+            port: 80
+            path: /health
+          initialDelaySeconds: 10
+          periodSeconds: 5
+
         env:
         - name: "ASPNETCORE_ENVIRONMENT"
           value: "Kubernetes"
@@ -33,4 +51,4 @@ spec:
       volumes:
       - name: secrets
         secret:
-          secretName: secret-appsettings
+          secretName: user-svc-app-secret

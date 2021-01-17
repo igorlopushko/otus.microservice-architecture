@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: user-service
+  name: user-svc-app
 spec:
   selector:
-    app: userservice
+    app: user-svc-app
     system: backend
   ports:
     - protocol: TCP

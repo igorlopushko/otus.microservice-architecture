@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: mssql-service
+  name: user-svc-mssqldb
 spec:
   selector:
-    app: mssql
+    app: user-svc-mssqldb
   ports:
     - protocol: TCP
       port: 1433
