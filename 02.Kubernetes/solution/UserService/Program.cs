@@ -16,7 +16,7 @@ namespace UserService
                 // attach additional config JSON files
                 .ConfigureAppConfiguration((hostingContext, config) =>
                 {
-                    config.AddJsonFile("secrets/appsettings.secrets.json", optional: true, reloadOnChange: true);
+                    config.AddJsonFile("secret/appsettings.secret.json", optional: true, reloadOnChange: true);
                 })
                 .ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>(); });
     }

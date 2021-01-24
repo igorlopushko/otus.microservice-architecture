@@ -6,8 +6,8 @@ spec:
   selector:
     app: user-svc-mssqldb
   ports:
-    - protocol: TCP
-      port: 1433
+    - port: 1433
+      protocol: TCP
       targetPort: 1433
       nodePort: 31433
-  type: NodePort
+  type: LoadBalancer

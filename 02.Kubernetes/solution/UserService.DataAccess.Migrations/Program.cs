@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -12,14 +11,14 @@ namespace UserService.DataAccess.Migrations
 {
     class Program
     {
-        static async Task Main(string[] args)
+        static void Main(string[] args)
         {
             var host = new HostBuilder()
                 .ConfigureAppConfiguration((hostingContext, config) =>
                 {
                     config.SetBasePath(Directory.GetCurrentDirectory());
                     config.AddJsonFile("appsettings.json", true);
-                    config.AddJsonFile("secrets/appsettings.secrets.json", optional: true, reloadOnChange: true);
+                    config.AddJsonFile("secret/appsettings.secret.json", optional: true, reloadOnChange: true);
                         
                     if (args != null)
                     {
@@ -38,8 +37,6 @@ namespace UserService.DataAccess.Migrations
                 }).Build();
 
             CreateDbIfNotExists(host);
-
-            await host.RunAsync();
         }
         
         private static void CreateDbIfNotExists(IHost host)

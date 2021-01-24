@@ -1,0 +1,31 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: user-svc-mssqldb-migrations-job
+spec:
+  backoffLimit: 1
+  template:
+    metadata:
+      name: "user-svc-mssqldb-migrations-job"
+      labels:
+        app: user-svc-mssqldb
+        system: database
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: user-svc-mssqldb-migrations
+        image: drmoz/userservice-migrations:v1
+        command: ["dotnet"]
+        args: ["UserService.DataAccess.Migrations.dll"]
+        
+        # mounts secrets volume to container
+        volumeMounts:
+        - name: secret
+          mountPath: /app/secret
+          readOnly: true
+
+      # mounts secrets volume to pod
+      volumes:
+      - name: secret
+        secret:
+          secretName: user-svc-app-secret
