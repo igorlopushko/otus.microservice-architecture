@@ -11,7 +11,8 @@ build:
 deploy:
   kubectl:
     manifests:
-    # create secrets
+    # create configmaps and secrets
+    - user-svc-app.configmap.yaml
     - user-svc-mssqldb.secret.yaml
 
     # create pv claims

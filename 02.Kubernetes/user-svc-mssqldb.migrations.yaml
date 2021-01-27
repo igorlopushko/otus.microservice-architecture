@@ -4,6 +4,7 @@ metadata:
   name: user-svc-mssqldb-migrations-job
 spec:
   backoffLimit: 1
+  ttlSecondsAfterFinished: 0
   template:
     metadata:
       name: "user-svc-mssqldb-migrations-job"

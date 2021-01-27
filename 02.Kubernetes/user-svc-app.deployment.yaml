@@ -45,14 +45,20 @@ spec:
         - name: "ASPNETCORE_ENVIRONMENT"
           value: "Kubernetes"
         
-        # mounts secrets volume to container
+        # mounts configmap and secret volumes to container
         volumeMounts:
-        - name: secret
+        - name: config-volume
+          mountPath: /app/config
+          readOnly: true
+        - name: secret-volume
           mountPath: /app/secret
           readOnly: true
 
-      # mounts secrets volume to pod
+      # mounts configmap and secret volumes to pod
       volumes:
-      - name: secret
+      - name: config-volume
+        configMap:
+          name: user-svc-app-config
+      - name: secret-volume
         secret:
           secretName: user-svc-app-secret
