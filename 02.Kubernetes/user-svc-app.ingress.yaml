@@ -9,7 +9,7 @@ spec:
   - host: arch.homework
     http:
       paths:
-        - path: /otusapp/(.*)/(.*)
+        - path: /otusapp/IgorLopushko(/|$)(.*)
           backend:
             serviceName: user-svc-app
             servicePort: 8000

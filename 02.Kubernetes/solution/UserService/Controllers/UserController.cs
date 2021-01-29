@@ -18,8 +18,7 @@ namespace UserService.Controllers
             var optionsBuilder = new DbContextOptionsBuilder<UserContext>();
 
             var options = optionsBuilder
-                //.UseSqlServer(config.GetConnectionString("UserContext"))
-                .UseSqlServer("Server=192.168.99.103,31433;Database=Users;User Id=SA;Password=Admin-123;")
+                .UseSqlServer(config.GetConnectionString("UserContext"))
                 .Options;
             
             _ctx = new UserContext(options);
