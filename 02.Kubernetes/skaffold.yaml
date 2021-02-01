@@ -13,6 +13,7 @@ deploy:
     manifests:
     # create configmaps and secrets
     - user-svc-app.configmap.yaml
+    - user-svc-app.appsettings.secret.yaml
     - user-svc-mssqldb.secret.yaml
 
     # create pv claims

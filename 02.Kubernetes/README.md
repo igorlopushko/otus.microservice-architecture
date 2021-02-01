@@ -7,7 +7,6 @@ minikube addons enable ingress<br />
 # install secrets json file<br />
 kubectl create namespace user-svc
 kubectl config set-context --current --namespace=user-svc
-kubectl create secret generic user-svc-app-secret --from-file=./config/UserService/appsettings.secret.json
 # build user service docker image<br />
 cd solution
 docker build -f UserService.Dockerfile -t drmoz/userservice:v1 .<br />
