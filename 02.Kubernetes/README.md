@@ -4,18 +4,19 @@ brew install minikube<br />
 sudo mv minikube /usr/local/bin<br />
 minikube start --vm-driver=virtualbox<br />
 minikube addons enable ingress<br />
-# install secrets json file<br />
-kubectl create namespace user-svc
-kubectl config set-context --current --namespace=user-svc
 # build user service docker image<br />
-cd solution
+cd src
 docker build -f UserService.Dockerfile -t drmoz/userservice:v1 .<br />
 docker push drmoz/userservice:v1
 # build migrations docker image<br />
 docker build -f UserService-Migration.Dockerfile -t drmoz/userservice-migrations:v1 .<br />
 docker push drmoz/userservice-migrations:v1<br /><br />
 
-apply skaffold.yaml<br/>
+# install helm chart for User Service
+ helm install user-svc ./charts/user-svc<br/>
+
+# apply database migrations
+kubectl apply -f user-svc-mssqldb.migrations.yaml<br/>
 
 # call to check service health:<br/>
 minikube service --url user-svc-app -n user-svc
