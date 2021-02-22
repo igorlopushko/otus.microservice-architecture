@@ -1,0 +1,207 @@
+{
+	"info": {
+		"_postman_id": "e482c332-7150-4690-85e9-9f0bc2c31956",
+		"name": "otus-kubernetes",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET all users",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Host",
+						"value": "arch.homework",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://192.168.99.105/otusapp/IgorLopushko/user",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"99",
+						"105"
+					],
+					"path": [
+						"otusapp",
+						"IgorLopushko",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET user by id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Host",
+						"value": "arch.homework",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://192.168.99.105/otusapp/IgorLopushko/user/1",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"99",
+						"105"
+					],
+					"path": [
+						"otusapp",
+						"IgorLopushko",
+						"user",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST create user",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Host",
+						"value": "arch.homework",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{    \n    \"firstName\": \"Igor\",\n    \"lastName\": \"Lopushko\",\n    \"email\": \"lopushko.igor@gmail.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://192.168.99.105/otusapp/IgorLopushko/user",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"99",
+						"105"
+					],
+					"path": [
+						"otusapp",
+						"IgorLopushko",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT update user",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Host",
+						"value": "arch.homework",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 1002,    \n    \"firstName\": \"Igor1\",\n    \"lastName\": \"Lopushko1\",\n    \"email\": \"lopushko.igor@gmail.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://192.168.99.105/otusapp/IgorLopushko/user",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"99",
+						"105"
+					],
+					"path": [
+						"otusapp",
+						"IgorLopushko",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE user by id",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Host",
+						"value": "arch.homework",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://192.168.99.105/otusapp/IgorLopushko/user/1002",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"99",
+						"105"
+					],
+					"path": [
+						"otusapp",
+						"IgorLopushko",
+						"user",
+						"1002"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
