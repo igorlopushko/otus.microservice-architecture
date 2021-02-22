@@ -1,0 +1,65 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Chart.Name }}-app-replicas
+spec:
+  replicas: {{ .Values.replicaCount }}
+  strategy: 
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+  selector:
+    matchLabels:
+      app: {{ .Chart.Name }}-app
+      system: backend
+  template:
+    metadata:
+      labels: 
+          app: {{ .Chart.Name }}-app
+          system: backend
+    spec:
+      containers:
+      - name: {{ .Chart.Name }}-app
+        image: {{ .Values.container.image.repository }}:{{ .Values.container.image.tag }}
+        imagePullPolicy: {{ .Values.container.image.pullPolicy }}
+        ports:
+          - containerPort: {{ .Values.container.containerPort }}
+
+        # to know when to restart a container
+        livenessProbe:
+          httpGet:
+            port: {{ .Values.container.containerPort }}
+            path: /health
+          initialDelaySeconds: 10
+          periodSeconds: 5
+          timeoutSeconds: 2
+
+        # to know when a container application has started
+        readinessProbe:
+          httpGet:
+            port: {{ .Values.container.containerPort }}
+            path: /health
+          initialDelaySeconds: 10
+          periodSeconds: 5
+
+        env:
+        - name: "ASPNETCORE_ENVIRONMENT"
+          value: "Kubernetes"
+        
+        # mounts configmap and secret volumes to container
+        volumeMounts:
+        - name: config-volume
+          mountPath: /app/config
+          readOnly: true
+        - name: secret-volume
+          mountPath: /app/secret
+          readOnly: true
+
+      # mounts configmap and secret volumes to pod
+      volumes:
+      - name: config-volume
+        configMap:
+          name: {{ .Chart.Name }}-app-config
+      - name: secret-volume
+        secret:
+          secretName: {{ .Chart.Name }}-app-secret
