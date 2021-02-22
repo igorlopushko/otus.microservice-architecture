@@ -13,10 +13,10 @@ docker build -f UserService-Migration.Dockerfile -t drmoz/userservice-migrations
 docker push drmoz/userservice-migrations:v1<br /><br />
 
 # install helm chart for User Service
- helm install user-svc ./charts/user-svc<br/>
+ helm install user-svc ./deployment/charts/user-svc<br/>
 
 # apply database migrations
-kubectl apply -f user-svc-mssqldb.migrations.yaml<br/>
+kubectl apply -f ./deployment/user-svc-mssqldb.migrations.yaml<br/>
 
 # call to check service health:<br/>
 minikube service --url user-svc-app -n user-svc
